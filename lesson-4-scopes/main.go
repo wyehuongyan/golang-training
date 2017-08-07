@@ -9,6 +9,7 @@ func main() {
 	foo()
 	y := 10 // syntactic sugar for var y int = 10
 	fmt.Println(y)
+	foo2()
 	foo3()
 }
 
@@ -30,7 +31,8 @@ func foo2() {
 }
 
 func wrapper() func() int {
-	x := 0
+	//x := 0
+	var x int
 	return func() int {
 		x++
 		return x
@@ -38,6 +40,8 @@ func wrapper() func() int {
 }
 
 func foo3() {
+	// wrapper inits x to be 0
+	// increment is only the returned func and does not init x again
 	increment := wrapper()
 	fmt.Println(increment())
 	fmt.Println(increment())
