@@ -13,7 +13,7 @@ func main() {
 	fmt.Println(half(2))
 
 	// q3
-	fmt.Println(largestNum([]int{1, 2, 3, 6, 4, 5}...))
+	fmt.Println(largestNum(1, 2, 3, 6, 4, 5))
 
 	// q4
 	expr()
