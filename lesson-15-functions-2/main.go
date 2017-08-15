@@ -13,10 +13,15 @@ func main() {
 		fmt.Println("Hello world!")
 	}
 
-	greeting()
+	greeting() // Hello world!
 
 	greet := makeGreeter()
-	fmt.Println(greet())
+	fmt.Println(greet()) // Hello world~
+
+	// anonymous self executing function
+	func() {
+		fmt.Println("I'm driving!")
+	}()
 }
 
 func makeGreeter() func() string {
