@@ -20,6 +20,7 @@ func (p Person) Greeting() {
 	fmt.Println("Hello!")
 }
 
+// overriding
 func (dz DoubleZero) Greeting() {
 	fmt.Println("Ni Hao!")
 }
