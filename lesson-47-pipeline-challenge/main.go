@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "sync"
 
 /*
 Execute 100 factorial computations concurrently and in parallel
@@ -24,6 +25,8 @@ func main() {
 
 func factorial(nums ...int) chan int {
 	out := make(chan int)
+	var wg sync.WaitGroup
+	wg.Add(len(nums))
 
 	for _, n := range nums {
 		go func(n int) {
@@ -32,7 +35,14 @@ func factorial(nums ...int) chan int {
 				total *= i
 			}
 			out <- total
+			wg.Done()
 		}(n)
 	}
+
+	go func() {
+		wg.Wait()
+		close(out)
+	}()
+
 	return out
 }
